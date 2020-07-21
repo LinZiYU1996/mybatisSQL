@@ -7,8 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="mybatisSQL" />
-        <module name="generator_demo" />
+        <module name="dynamic_sql" />
         <module name="annotation_demo" />
+        <module name="generator_demo" />
       </profile>
     </annotationProcessing>
   </component>

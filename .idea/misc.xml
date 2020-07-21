@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/annotation_demo/pom.xml" />
         <option value="$PROJECT_DIR$/generator_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/dynamic_sql/pom.xml" />
       </list>
     </option>
   </component>
