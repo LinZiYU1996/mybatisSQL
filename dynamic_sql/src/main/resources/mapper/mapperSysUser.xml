@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lin.dynamic_sql.mapper.SysUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lin.dynamic_sql.entity.SysUser">
+        <id column="id" property="id" />
+        <result column="user_name" property="userName" />
+        <result column="user_password" property="userPassword" />
+        <result column="user_email" property="userEmail" />
+        <result column="user_info" property="userInfo" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_name, user_password, user_email, user_info, create_time
+    </sql>
+
+
+    <!--    resultType="com.lin.dynamic_sql.entity.SysUser"  -->
+<!--    因为两个条件都是动态 的 所以如果没有 1 = 1 这个默认条件 当两个if都不满足条件时
+最终生成的sql语句就会以where结束 这样不符合sql规范  因此会报错-->
+    <select id="selectByUser"  resultType="com.lin.dynamic_sql.entity.SysUser" >
+
+        select id,
+        user_name userName,
+        user_password userPassword,
+        user_email userEmail,
+        user_info userInfo,
+
+        create_time createTime
+        from sys_user
+        where 1 = 1
+        <if test="userName != null and userName != ''" >
+            and user_name like concat('%', #{userName}, '%')
+        </if>
+        <if test="userEmail != null and userEmail != ''" >
+            and user_email = #{userEmail}
+        </if>
+
+
+
+
+    </select>
+
+
+
+    <update id="updateByIdSelective">
+        update sys_user
+        <set>
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                user_password = #{userPassword},
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                user_email = #{userEmail},
+            </if>
+            <if test="userInfo != null and userInfo != ''">
+                user_info = #{userInfo},
+            </if>
+
+            <if test="createTime != null">
+                create_time = #{createTime, jdbcType=TIMESTAMP},
+            </if>
+            id = #{id},
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <insert id="insert3">
+
+        insert into sys_user(
+        user_name,
+        user_password,
+        <if test="userEmail != null and userEmail != ''">
+            user_email
+        </if>
+        user_info,
+        create_time)
+        values (
+        #{userName},
+        #{userPassword},
+        <if test="userEmail != null and userEmail != ''">
+            #{userEmail},
+        </if>
+                #{userInfo},
+        #{createTime, jdbcType=TIMESTAMP}                )
+
+    </insert>
+
+
+    <select id="selectByIdOrUserName" resultType="com.lin.dynamic_sql.entity.SysUser">
+
+          select id,
+        user_name userName,
+        user_password userPassword,
+        user_email userEmail,
+        user_info userInfo,
+
+        create_time createTime
+        from sys_user
+        where  1 = 1
+        <choose>
+
+            <when test="id != null">
+
+                and id = #{id}
+
+            </when>
+
+            <when test="userName != null and userName != ''">
+
+                and user_name = #{userName}
+
+            </when>
+            <otherwise>
+                and 1 = 2
+            </otherwise>
+        </choose>
+
+    </select>
+</mapper>
