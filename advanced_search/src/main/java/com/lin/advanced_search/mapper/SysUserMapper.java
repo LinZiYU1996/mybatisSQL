@@ -1,7 +1,7 @@
-package com.lin.dynamic_sql.mapper;
+package com.lin.advanced_search.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lin.dynamic_sql.entity.SysUser;
+import com.lin.advanced_search.entity.SysUser;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -95,4 +95,18 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
     int updateByMap(Map<String, Object> map);
 
 
+    /**
+     *
+     * 根据用户id获取用户信息以及用户的角色信息
+     *
+     *
+     */
+
+    SysUser selectUserAndRoleById(Long id);
+
+    /**
+     * 获取所有用户的以及对应的所有角色
+     */
+
+    List<SysUser> selectAllUserAndRoles();
 }

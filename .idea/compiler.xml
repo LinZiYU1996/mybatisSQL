@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="advanced_search" />
         <module name="mybatisSQL" />
         <module name="dynamic_sql" />
         <module name="annotation_demo" />
@@ -15,6 +16,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="advanced_search" options="-parameters" />
       <module name="annotation_demo" options="-parameters" />
       <module name="dynamic_sql" options="-parameters" />
       <module name="generator_demo" options="-parameters" />

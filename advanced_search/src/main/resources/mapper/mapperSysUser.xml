@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lin.advanced_search.mapper.SysUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lin.advanced_search.entity.SysUser">
+        <id column="id" property="id" />
+        <result column="user_name" property="userName" />
+        <result column="user_password" property="userPassword" />
+        <result column="user_email" property="userEmail" />
+        <result column="user_info" property="userInfo" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+
+<!--    <resultMap id="userRoleMap" extends="userMap" type="com.lin.advanced_search.entity.SysUser">-->
+<!--        <association property="role" columnPrefix="role_" resultMap="com.lin.advanced_search.mapper.SysUserMapper.roleMap"/>-->
+<!--    </resultMap>-->
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_name, user_password, user_email, user_info, create_time
+    </sql>
+
+
+
+
+    <select id="selectUserAndRoleById" resultType="com.lin.advanced_search.entity.SysUser">
+		select
+		   	u.id,
+		   	u.user_name userName,
+		    u.user_password userPassword,
+		    u.user_email userEmail,
+		    u.user_info userInfo,
+		    u.create_time createTime,
+			r.id "role.id",
+			r.role_name "role.roleName",
+			r.enabled "role.enabled",
+			r.create_by "role.createBy",
+			r.create_time "role.createTime"
+		from sys_user u
+		inner join sys_user_role ur on u.id = ur.user_id
+		inner join sys_role r on ur.role_id = r.id
+		where u.id = #{id}
+	</select>
+    <resultMap id="userRoleListMap" extends="BaseResultMap" type="com.lin.advanced_search.entity.SysUser">
+        <id property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="userPassword" column="user_password"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="userInfo" column="user_info"/>
+        <result property="headImg" column="head_img" jdbcType="BLOB"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <collection property="roleList" columnPrefix="role_" javaType="com.lin.advanced_search.entity.SysRole">
+            <id property="id" column="id"/>
+            <result property="roleName" column="role_name"/>
+            <result property="enabled" column="enabled"/>
+            <result property="createBy" column="create_by"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        </collection>
+    </resultMap>
+
+
+    <select id="selectAllUserAndRoles" resultMap="userRoleListMap">
+	    select
+	    	u.id,
+	    	u.user_name,
+	        u.user_password,
+	        u.user_email,
+	        u.user_info,
+	        u.create_time,
+	        r.id role_id,
+			r.role_name role_role_name,
+			r.enabled role_enabled,
+			r.create_by role_create_by,
+			r.create_time role_create_time,
+			p.id role_privilege_id,
+			p.privilege_name role_privilege_privilege_name,
+			p.privilege_url role_privilege_privilege_url
+		from sys_user u
+		inner join sys_user_role ur on u.id = ur.user_id
+		inner join sys_role r on ur.role_id = r.id
+		inner join sys_role_privilege rp on rp.role_id = r.id
+		inner join sys_privilege p on p.id = rp.privilege_id
+	</select>
+
+
+</mapper>
