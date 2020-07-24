@@ -3,6 +3,7 @@ package com.lin.advanced_search.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -16,6 +17,8 @@ import java.util.List;
  * @author Lin
  * @since 2020-07-21
  */
+
+@Data
 public class SysUser extends Model<SysUser> {
 
     private static final long serialVersionUID=1L;
@@ -56,73 +59,6 @@ public class SysUser extends Model<SysUser> {
 
     private List<SysRole> roleList;
 
-    public List<SysRole> getRoleList() {
-        return roleList;
-    }
-
-    public void setRoleList(List<SysRole> roleList) {
-        this.roleList = roleList;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public SysRole getSysRole() {
-        return sysRole;
-    }
-
-    public void setSysRole(SysRole sysRole) {
-        this.sysRole = sysRole;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getUserInfo() {
-        return userInfo;
-    }
-
-    public void setUserInfo(String userInfo) {
-        this.userInfo = userInfo;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
 
     @Override
     protected Serializable pkVal() {

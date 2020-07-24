@@ -1,7 +1,9 @@
 package com.lin.advanced_search.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.lin.advanced_search.entity.SysRole;
 import com.lin.advanced_search.entity.SysUser;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -109,4 +111,14 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
      */
 
     List<SysUser> selectAllUserAndRoles();
+
+
+    /**
+     * 场景：用户表和角色表通过中间表关联，要根据用户id获取用户拥有的角色列表
+     *
+     */
+//    @Select("select r.role_name from sys_role r LEFT JOIN sys_user_role ur on ur.role_id=r.id where user_id=#{uid}")
+    @Select("select r.* from sys_role r LEFT JOIN sys_user_role ur on ur.role_id=r.id where user_id=#{uid}")
+    List<SysRole> getRoles(Long userId);
+
 }

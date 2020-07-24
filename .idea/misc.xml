@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/generator_demo/pom.xml" />
         <option value="$PROJECT_DIR$/dynamic_sql/pom.xml" />
         <option value="$PROJECT_DIR$/advanced_search/pom.xml" />
+        <option value="$PROJECT_DIR$/many_to_many/pom.xml" />
       </list>
     </option>
   </component>

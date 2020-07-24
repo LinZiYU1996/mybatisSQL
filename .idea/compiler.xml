@@ -7,10 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="advanced_search" />
-        <module name="mybatisSQL" />
-        <module name="dynamic_sql" />
-        <module name="annotation_demo" />
         <module name="generator_demo" />
+        <module name="many_to_many" />
+        <module name="mybatisSQL" />
+        <module name="annotation_demo" />
+        <module name="dynamic_sql" />
       </profile>
     </annotationProcessing>
   </component>
@@ -20,6 +21,7 @@
       <module name="annotation_demo" options="-parameters" />
       <module name="dynamic_sql" options="-parameters" />
       <module name="generator_demo" options="-parameters" />
+      <module name="many_to_many" options="-parameters" />
       <module name="mybatisSQL" options="-parameters" />
     </option>
   </component>
