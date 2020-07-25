@@ -11,11 +11,11 @@ import org.springframework.stereotype.Controller;
  * </p>
  *
  * @author Lin
- * @since 2020-07-23
+ * @since 2020-07-24
  */
 @Controller
-@RequestMapping("/generator/orders")
-public class OrdersController {
+@RequestMapping("/generator/score")
+public class ScoreController {
 
 }
 

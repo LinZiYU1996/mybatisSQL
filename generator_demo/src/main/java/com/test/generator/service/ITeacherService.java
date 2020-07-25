@@ -1,6 +1,6 @@
 package com.test.generator.service;
 
-import com.test.generator.entity.Orders;
+import com.test.generator.entity.Teacher;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author Lin
- * @since 2020-07-23
+ * @since 2020-07-24
  */
-public interface IOrdersService extends IService<Orders> {
+public interface ITeacherService extends IService<Teacher> {
 
 }

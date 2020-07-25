@@ -14,31 +14,26 @@ import java.util.List;
  * </p>
  *
  * @author Lin
- * @since 2020-07-23
+ * @since 2020-07-24
  */
+
 @Data
-public class User extends Model<User> {
+public class Role extends Model<Role> {
 
     private static final long serialVersionUID=1L;
 
       @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    private String username;
+    private String name;
 
-    private String sex;
-
-
-    //一个用户能创建多个订单，用户和订单构成一对多的关系
-    public List<Orders> orders;
+    private List<User> users;
 
 
-    public List<Role> roles;
 
     @Override
     protected Serializable pkVal() {
         return this.id;
     }
-
 
 }

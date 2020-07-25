@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Primary;
 
+import java.util.List;
+
 @SpringBootTest
 @Slf4j
 class ManyToManyApplicationTests {
@@ -50,6 +52,16 @@ class ManyToManyApplicationTests {
 
         log.info(u.toString());
         //User(id=1, username=1, sex=男, orders=[Orders(id=1, userId=null, number=122, user=null)])
+    }
+
+    @Test
+    public void t5() {
+
+        List<User> u = userMapper.getUserByRoleId(1);
+
+        log.info(u.toString());
+//[User(id=1, username=1, sex=男, orders=null, roles=null)]
+
     }
 
 }

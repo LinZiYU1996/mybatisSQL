@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.generator.mapper.StudentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.test.generator.entity.Student">
+        <result column="Sid" property="Sid" />
+        <result column="Sname" property="Sname" />
+        <result column="Sage" property="Sage" />
+        <result column="Ssex" property="Ssex" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        Sid, Sname, Sage, Ssex
+    </sql>
+
+</mapper>

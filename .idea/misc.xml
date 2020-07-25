@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/dynamic_sql/pom.xml" />
         <option value="$PROJECT_DIR$/advanced_search/pom.xml" />
         <option value="$PROJECT_DIR$/many_to_many/pom.xml" />
+        <option value="$PROJECT_DIR$/sql_50/pom.xml" />
       </list>
     </option>
   </component>

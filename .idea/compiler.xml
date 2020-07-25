@@ -10,6 +10,7 @@
         <module name="generator_demo" />
         <module name="many_to_many" />
         <module name="mybatisSQL" />
+        <module name="sql_50" />
         <module name="annotation_demo" />
         <module name="dynamic_sql" />
       </profile>
@@ -23,6 +24,7 @@
       <module name="generator_demo" options="-parameters" />
       <module name="many_to_many" options="-parameters" />
       <module name="mybatisSQL" options="-parameters" />
+      <module name="sql_50" options="-parameters" />
     </option>
   </component>
 </project>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lin.sql_50.mapper.StudentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lin.sql_50.entity.Student">
+        <result column="Sid" property="Sid" />
+        <result column="Sname" property="Sname" />
+        <result column="Sage" property="Sage" />
+        <result column="Ssex" property="Ssex" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        Sid, Sname, Sage, Ssex
+    </sql>
+
+
+    <select id="countManAndWoManNumber" resultType="java.util.HashMap">
+
+        select ssex as 性别, count(*) as 人数 from student
+        group by ssex;
+
+    </select>
+
+
+    <select id="countCoursesByStudents" resultType="java.util.HashMap">
+
+    select cid, count(sid) as 选修人数 from score
+        group by cid;
+    </select>
+
+
+</mapper>

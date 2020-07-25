@@ -41,6 +41,18 @@
         </collection>
     </resultMap>
 
+    <select id="getUserByRoleId" resultMap="getUserMap">
+            select * from user_role ur,user u where ur.user_id=u.id and ur.role_id=#{id}
+     </select>
+
+    <resultMap type="com.lin.many_to_many.entity.User" id="getUserMap">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="sex" property="sex"/>
+    </resultMap>
+
+
+
 
 
 </mapper>
