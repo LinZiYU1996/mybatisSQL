@@ -31,4 +31,50 @@
     </select>
 
 
+    <select id="countStudentsMaxtoNum"  resultType="java.util.HashMap" >
+
+        select cid, count(sid) as 选修人数 from score
+        group by cid
+        having count(sid) > #{num};
+
+
+    </select>
+
+
+    <select id="countCoursesMaxtoNum"  resultType="java.util.HashMap">
+
+        select sid from score
+        group by sid
+        having count(cid)>= #{num};
+
+    </select>
+
+    <select id="averageScore" resultType="java.util.HashMap">
+
+        select student.sid, student.sname, avg(cscore) from score
+        join student
+        on student.sid = score.sid
+        group by score.sid
+        having avg(cscore) >= #{score};
+
+    </select>
+
+<!--    <select id="getInfoStudentUnder60" resultType="java.util.HashMap">-->
+
+<!--        select sname, score.* from score-->
+<!--        left join student-->
+<!--        on score.sid = student.sid-->
+
+<!--        where cscore < #{s};-->
+<!--    </select>-->
+
+    <select id="getAll" resultType="java.util.HashMap">
+        select t1.sid, t1.sname, count(t2.cid) as 选课数, sum(t2.cscore) as 总成绩
+        from student as t1
+        left join score as t2
+        on t1.sid = t2.sid
+        group by sid;
+
+    </select>
+
 </mapper>
