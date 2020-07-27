@@ -77,4 +77,26 @@
 
     </select>
 
+
+    <select id="sel_1"  resultType="java.util.HashMap">
+
+        select student.sname, cscore from score
+        join student
+        on score.sid = student.sid
+        where cid = (select cid from course where cname = '数学') and cscore &lt; 60;
+
+    </select>
+
+
+    <select id="sel_2"  resultType="java.util.HashMap">
+
+        select student.sid, student.sname, avg(score.cscore) as 平均分 from
+            student
+        left join
+            score
+        on student.sid = score.sid
+        group by score.sid
+        having avg(score.cscore) >= 60;
+
+    </select>
 </mapper>

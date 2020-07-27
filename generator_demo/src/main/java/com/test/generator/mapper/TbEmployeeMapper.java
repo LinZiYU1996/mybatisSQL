@@ -1,6 +1,6 @@
 package com.test.generator.mapper;
 
-import com.test.generator.entity.Course;
+import com.test.generator.entity.TbEmployee;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author Lin
- * @since 2020-07-24
+ * @since 2020-07-26
  */
-public interface CourseMapper extends BaseMapper<Course> {
+public interface TbEmployeeMapper extends BaseMapper<TbEmployee> {
 
 }

@@ -109,4 +109,58 @@ class Sql50ApplicationTests {
     }
 
 
+    /***
+     * 查询课程名称为「数学」，且分数低于 60 的学生姓名和分数
+     */
+    @Test
+    public void t8() {
+
+        List<HashMap<String, String>> l1 = studentMapper.sel_1();
+
+        log.info(l1.toString());
+//[{sname=李云, cscore=30.0}]
+
+    }
+
+ //在 XML 中，一些字符拥有特殊的意义。
+    //
+    //如果您把字符 "<" 放在 XML 元素中，会发生错误，这是因为解析器会把它当作新元素的开始。
+    //
+    //这样会产生 XML 错误：
+    //
+    //为了避免这个错误，用实体引用来代替 "<" 字符，如下：
+    //
+    //  <message>if salary <1000 then</message> 需要改为<message>if salary &lt; 1000 then</message>
+    //
+    //在 XML 中，有 5 个预定义的实体引用：
+
+    //&lt;	<	less than
+    //&gt;	>	greater than
+    //&amp;	&	ampersand
+    //&apos;	'	apostrophe
+    //&quot;	"	quotation mark
+
+
+    /**
+     * 查询平均成绩大于等于 60 分的同学的学生编号、学生姓名和平均成绩
+     *
+     *
+     */
+    @Test
+    public void t9() {
+        List<HashMap<String, String>> l1 = studentMapper.sel_2();
+
+        log.info(l1.toString());
+//[{sname=赵雷, sid=01, 平均分=89.66667},
+// {sname=钱电, sid=02, 平均分=70.00000}
+// , {sname=孙风, sid=03, 平均分=80.00000},
+// {sname=周梅, sid=05, 平均分=81.50000},
+// {sname=郑竹, sid=07, 平均分=93.50000}]
+
+
+
+    }
+
+
+
 }

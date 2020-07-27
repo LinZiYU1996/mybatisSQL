@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lin.dynamic_sql.mapper.TbEmployeeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lin.dynamic_sql.entity.TbEmployee">
+        <id column="ID" property="id" />
+        <result column="loginname" property="loginname" />
+        <result column="PASSWORD" property="password" />
+        <result column="NAME" property="name" />
+        <result column="SEX" property="sex" />
+        <result column="AGE" property="age" />
+        <result column="phone" property="phone" />
+        <result column="sal" property="sal" />
+        <result column="state" property="state" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, loginname, PASSWORD, NAME, SEX, AGE, phone, sal, state
+    </sql>
+
+
+    <select id="selectEmployeeWithId" parameterType="int"  resultType="com.lin.dynamic_sql.entity.TbEmployee">
+      SELECT * FROM tb_employee where id = #{id}
+  </select>
+
+
+    <!-- if -->
+    <select id="selectEmployeeByIdLike"
+            resultType="com.lin.dynamic_sql.entity.TbEmployee">
+        SELECT * FROM tb_employee WHERE state = 'ACTIVE'
+        <!-- 可选条件，如果传进来的参数有id属性，则加上id查询条件 -->
+        <if test="id != null ">
+            and id = #{id}
+        </if>
+    </select>
+
+    <!-- if -->
+
+
+
+
+
+
+</mapper>

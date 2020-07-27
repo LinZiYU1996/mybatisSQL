@@ -68,4 +68,11 @@ public interface StudentMapper extends BaseMapper<Student> {
      */
     List<HashMap<String, String>> getAll();
 
+
+    List<HashMap<String, String>> sel_1();
+
+    List<HashMap<String, String>> sel_2();
+
+
+
 }
