@@ -8,10 +8,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="advanced_search" />
         <module name="generator_demo" />
-        <module name="many_to_many" />
         <module name="mybatisSQL" />
-        <module name="sql_50" />
+        <module name="many_to_many" />
         <module name="annotation_demo" />
+        <module name="sql_50" />
         <module name="dynamic_sql" />
       </profile>
     </annotationProcessing>

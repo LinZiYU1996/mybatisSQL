@@ -20,7 +20,7 @@ public interface TbEmployeeMapper extends BaseMapper<TbEmployee> {
 
 //    List<TbEmployee> selectEmployeeByLoginLike(HashMap<String, Object> params);
 //
-//    List<TbEmployee> selectEmployeeChoose(HashMap<String, Object> params);
+    List<TbEmployee> selectEmployeeChoose(HashMap<String, Object> params);
 //
 //    List<TbEmployee> findEmployeeLike(HashMap<String, Object> params);
 //
@@ -28,11 +28,11 @@ public interface TbEmployeeMapper extends BaseMapper<TbEmployee> {
 //
     TbEmployee selectEmployeeWithId(Integer id);
 //
-//    void updateEmployeeIfNecessary(TbEmployee employee);
+    void updateEmployeeIfNecessary(TbEmployee employee);
 //
-//    List<TbEmployee> selectEmployeeIn(List<Integer> ids);
+    List<TbEmployee> selectEmployeeIn(List<Integer> ids);
 //
-//    List<TbEmployee> selectEmployeeLikeName(TbEmployee employee);
+    List<TbEmployee> selectEmployeeLikeName(TbEmployee employee);
 
 
 

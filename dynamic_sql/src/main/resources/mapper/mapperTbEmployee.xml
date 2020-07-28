@@ -39,6 +39,114 @@
     <!-- if -->
 
 
+    <!-- choose（when、otherwise） -->
+    <select id="selectEmployeeChoose"
+            parameterType="hashmap"
+            resultType="com.lin.dynamic_sql.entity.TbEmployee">
+        SELECT * FROM tb_employee WHERE state = 'ACTIVE'
+        <!-- 如果传入了id，就根据id查询，没有传入id就根据loginname和password查询，否则查询sex等于男的数据 -->
+        <choose>
+            <when test="id != null">
+                and id = #{id}
+            </when>
+            <when test="loginname != null and password != null">
+                and loginname = #{loginname} and password =  #{password}
+            </when>
+            <otherwise>
+                and sex = '男'
+            </otherwise>
+        </choose>
+    </select>
+
+
+
+    <!-- 没有使用where元素，如果没有传入state参数，会导致执行失败 -->
+    <select id="findEmployeeLike"
+            resultType="com.lin.dynamic_sql.entity.TbEmployee">
+        SELECT * FROM tb_employee WHERE
+        <if test="state != null ">
+            state = #{state}
+        </if>
+        <if test="id != null ">
+            and id = #{id}
+        </if>
+        <if test="loginname != null and password != null">
+            and loginname = #{loginname} and password =  #{password}
+        </if>
+    </select>
+
+
+
+    <!-- where -->
+    <select id="selectEmployeeLike"
+            resultType="com.lin.dynamic_sql.entity.TbEmployee">
+        SELECT * FROM tb_employee
+        <where>
+            <if test="state != null ">
+                state = #{state}
+            </if>
+            <if test="id != null ">
+                and id = #{id}
+            </if>
+            <if test="loginname != null and password != null">
+                and loginname = #{loginname} and password =  #{password}
+            </if>
+        </where>
+    </select>
+
+    <!-- set -->
+    <update id="updateEmployeeIfNecessary"
+            parameterType="com.lin.dynamic_sql.entity.TbEmployee">
+        update tb_employee
+        <set>
+            <if test="loginname !=  null">loginname=#{loginname},</if>
+            <if test="password !=  null">password=#{password},</if>
+            <if test="name != null">name=#{name},</if>
+            <if test="sex != null">sex=#{sex},</if>
+            <if test="age != null">age=#{age},</if>
+            <if test="phone != null">phone=#{phone},</if>
+            <if test="sal != null">sal=#{sal},</if>
+            <if test="state != null">state=#{state}</if>
+        </set>
+        where id=#{id}
+    </update>
+
+
+    <!-- foreach -->
+    <select id="selectEmployeeIn"  resultType="com.lin.dynamic_sql.entity.TbEmployee">
+        SELECT *
+        FROM tb_employee
+        WHERE ID in
+        <foreach item="item" index="index" collection="list"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+
+
+
+    <!-- bind -->
+    <select id="selectEmployeeLikeName"   resultType="com.lin.dynamic_sql.entity.TbEmployee">
+        <bind name="pattern" value="'%' + _parameter.getName() +  '%'" />
+        SELECT * FROM tb_employee
+        WHERE loginname LIKE #{pattern}
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
